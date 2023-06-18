@@ -75,8 +75,7 @@ public class Hotel {
 	}
 	@Override
 	public String toString() {
-		return "Hotel [id=" + id + ", name=" + name + ", address=" + address + ", gst=" + gst + ", hotelFoods="
-				+ hotelFoods + ", hotelCustomers=" + hotelCustomers + "]";
+		return "Hotel [id=" + id + ", name=" + name + ", address=" + address + ", gst=" + gst + "]";
 	}
 	
 	 

@@ -1,9 +1,12 @@
 package DTO;
 
+import java.util.HashMap;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class Customer {
@@ -13,6 +16,8 @@ public class Customer {
 	private String name;
 	private String address;
 	private long phone;
+	@Transient
+	private HashMap<Food, Integer> hashMap;
 	public String getName() {
 		return name;
 	}
@@ -30,6 +35,19 @@ public class Customer {
 	}
 	public void setPhone(long phone) {
 		this.phone = phone;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public HashMap<Food, Integer> getHashMap() {
+		return hashMap;
+	}
+	public void setHashMap(HashMap<Food, Integer> hashMap) {
+		this.hashMap = hashMap;
 	}
 	public Customer(String name, String address, long phone) {
 		super();
