@@ -12,6 +12,13 @@ public class Food {
 	private int id;
 	private String name;
 	private double price;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -35,7 +42,7 @@ public class Food {
 	}
 	@Override
 	public String toString() {
-		return "Food [id=" + id + ", name=" + name + ", price=" + price + "]";
+		return "Food [id=" + id + ", name=" + name + ", price=" + price + "]\n";
 	}
 	
 	

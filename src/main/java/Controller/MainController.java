@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,7 +55,9 @@ public class MainController {
 			
 			System.out.println("Enter the id of hotel which you have selected");
 			int id = scanner.nextInt();
-			Hotel hotel = ProvideEM.entityManager.find(Hotel.class, id);
+			
+			
+			//Hotel hotel = ProvideEM.entityManager.find(Hotel.class, id);
 			HashMap<Food, Integer> hashMap = new HashMap<Food, Integer>();
 			int i =1;
 			while(i>0) {
@@ -107,7 +111,15 @@ public class MainController {
 				FileWriter fileWriter = new FileWriter(f1, true);
 				PrintWriter printWriter = new PrintWriter(fileWriter);
 				BufferedWriter bufferedWriter = new BufferedWriter(printWriter);
+				LocalDate localDate = LocalDate.now();
+				LocalTime localTime = LocalTime.now();
 				bufferedWriter.write("Bill no: "+ srno++);
+				bufferedWriter.newLine();
+				bufferedWriter.write("Date : "+localDate.getDayOfMonth()+ " "+localDate.getMonth()+" "+localDate.getYear());
+				bufferedWriter.newLine();
+				bufferedWriter.write("Time : "+localTime.getHour()+ " : "+localTime.getMinute()+" : "+localTime.getSecond());
+				bufferedWriter.newLine();
+				bufferedWriter.write("____________________");
 				bufferedWriter.newLine();
 				 sr=1; sum=0;
 				for(Entry<Food, Integer> foodEntry:customer.getHashMap().entrySet()) {
@@ -170,6 +182,7 @@ public class MainController {
 					hotelDAO.saveHotel(hotel);
 					break;
 				case 5:
+					hotelDAO.viewHotel();
 					System.out.println("Enter id of hotel to be removed: ");
 					int id1 = scanner.nextInt();
 					Hotel hotel2 = ProvideEM.entityManager.find(Hotel.class, id1);
@@ -179,6 +192,7 @@ public class MainController {
 					hotelDAO.viewHotel();
 					break;
 				case 7:
+					hotelDAO.viewHotel();
 					System.out.println("Enter id of hotel to be update: ");
 					int id2 = scanner.nextInt();
 					Hotel hotel3 = ProvideEM.entityManager.find(Hotel.class, id2);
@@ -194,6 +208,7 @@ public class MainController {
 					hotelDAO.updateHotel(hotel3);
 					break;
 				case 8:
+					hotelDAO.viewHotel();
 					System.out.println("Enter id of hotel to which food is to added: ");
 					int id3 = scanner.nextInt();
 					Hotel hotel4 = ProvideEM.entityManager.find(Hotel.class, id3);
@@ -217,9 +232,47 @@ public class MainController {
 					hotel4.setHotelFoods(foods);
 					foodDAO.addFood(hotel4);
 					break;
-				case 9:
+				case 9:{
+					hotelDAO.viewHotel();
+					System.out.println("Enter id of hotel to which food is to added: ");
+					int idd = scanner.nextInt();
+					Hotel hotell = ProvideEM.entityManager.find(Hotel.class, idd);
+					System.out.println("Select the id of the food you want to remove: ");
+					List<Food> foodsList = hotell.getHotelFoods();
+					System.out.println(foodsList);
+					int foodId=scanner.nextInt();
+					for(Food food :foodsList) {
+						if (foodId==food.getId()) {
+							foodsList.remove(food);
+						}
+					}
+					System.out.println("Updated list of food for the hotel is :");
+					System.out.println(foodsList);
+					hotell.setHotelFoods(foodsList);
+					hotelDAO.updateHotel(hotell);
+				}
 					break;
-				case 10:
+				case 10:{
+					hotelDAO.viewHotel();
+					System.out.println("Enter id of hotel to which food price is to be updated: ");
+					int idd = scanner.nextInt();
+					Hotel hotell = ProvideEM.entityManager.find(Hotel.class, idd);
+					System.out.println("Select the id of the food you want to update: ");
+					List<Food> foodsList = hotell.getHotelFoods();
+					System.out.println(foodsList);
+					int foodId=scanner.nextInt();
+					for(Food food :foodsList) {
+						if (foodId==food.getId()) {
+							System.out.println("Enter new price: ");
+							double newPrice=scanner.nextDouble();
+							food.setPrice(newPrice);
+						}
+					}
+					System.out.println("Updated list of food for the hotel is :");
+					System.out.println(foodsList);
+					hotell.setHotelFoods(foodsList);
+					hotelDAO.updateHotel(hotell);
+				}
 					break;
 				case 11:
 					break;

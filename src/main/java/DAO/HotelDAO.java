@@ -3,6 +3,7 @@ package DAO;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import DTO.Food;
 import DTO.Hotel;
 
 public class HotelDAO {
@@ -39,6 +40,9 @@ public class HotelDAO {
 		// TODO Auto-generated method stub
 		EntityTransaction entityTransaction = ProvideEM.entityManager.getTransaction();
 		entityTransaction.begin();
+		for(Food food :hotel3.getHotelFoods()) {
+			ProvideEM.entityManager.merge(food);
+		}
 		ProvideEM.entityManager.merge(hotel3);
 		entityTransaction.commit();
 	}

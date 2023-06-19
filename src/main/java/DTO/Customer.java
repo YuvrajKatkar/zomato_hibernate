@@ -1,6 +1,7 @@
 package DTO;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

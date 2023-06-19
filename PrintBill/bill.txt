@@ -3,3 +3,45 @@ Bill no: 1
 
 Total : 300
 ________________
+Bill no: 1
+1 . ButterRoti  12 : 420.0
+2 . JeeraRice  2 : 240.0
+3 . Roti  10 : 250.0
+
+Total : 910
+________________
+Bill no: 1
+Date : 19 JUNE 2023
+Time : 12 : 58 : 25
+____________________1 . JeeraRice  1 : 120.0
+2 . Roti  4 : 100.0
+
+Total : 220
+________________
+Bill no: 1
+Date : 19 JUNE 2023
+Time : 13 : 0 : 29
+____________________
+1 . JeeraRice  1 : 120.0
+2 . Roti  4 : 100.0
+
+Total : 220
+________________
+Bill no: 1
+Date : 19 JUNE 2023
+Time : 13 : 2 : 8
+____________________
+1 . VegKolhapuri  2 : 360.0
+2 . DalTadka  2 : 3000.0
+3 . Naan  5 : 250.0
+
+Total : 3610
+________________
+Bill no: 1
+Date : 19 JUNE 2023
+Time : 13 : 16 : 26
+____________________
+1 . VegKolhapuri  5 : 900.0
+
+Total : 900
+________________

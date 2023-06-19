@@ -10,6 +10,7 @@ public class CustomerDAO {
 		// TODO Auto-generated method stub
 		EntityTransaction entityTransaction = ProvideEM.entityManager.getTransaction();
 		entityTransaction.begin();
+		
 		ProvideEM.entityManager.persist(customer);
 		entityTransaction.commit();
 		
