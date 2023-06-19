@@ -1,5 +1,10 @@
 package Controller;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -81,6 +86,46 @@ public class MainController {
 			}
 			System.out.println("Total : "+sum);
 			System.out.println("________________");
+			//print bill in file
+			File file = new File("F:\\Personal\\Programming\\Saved code files\\Eclipse files\\NumberPrograms\\Zomato_Hibernate\\PrintBill");
+			if(!file.exists()) {
+				file.mkdir();
+				System.out.println("New folder is created");
+			}
+			File f1 = new File("F:\\Personal\\Programming\\Saved code files\\Eclipse files\\NumberPrograms\\Zomato_Hibernate\\PrintBill\\bill.txt");
+			try {
+				if(!f1.createNewFile()) {
+					System.out.println("Bill file is created");
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				System.out.println("Exception while creating a file");
+				e.printStackTrace();
+			}
+			try {
+				int srno=1;
+				FileWriter fileWriter = new FileWriter(f1, true);
+				PrintWriter printWriter = new PrintWriter(fileWriter);
+				BufferedWriter bufferedWriter = new BufferedWriter(printWriter);
+				bufferedWriter.write("Bill no: "+ srno++);
+				bufferedWriter.newLine();
+				 sr=1; sum=0;
+				for(Entry<Food, Integer> foodEntry:customer.getHashMap().entrySet()) {
+					bufferedWriter.write(sr++ + " . "+foodEntry.getKey().getName() + "  "+foodEntry.getValue() +" : "+foodEntry.getValue()*foodEntry.getKey().getPrice());
+					bufferedWriter.newLine();
+					sum +=  foodEntry.getValue()*foodEntry.getKey().getPrice();
+				}
+				bufferedWriter.newLine();
+				bufferedWriter.write("Total : "+sum);
+				bufferedWriter.newLine();
+				bufferedWriter.write("________________");
+				bufferedWriter.newLine();
+				bufferedWriter.flush();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			customerDAO.saveCustomer(customer);
 			
 		} else {
