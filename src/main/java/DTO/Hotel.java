@@ -2,6 +2,7 @@ package DTO;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,9 +16,9 @@ public class Hotel {
 	private String name;
 	private String address;
 	private long gst;
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	List<Food> hotelFoods;
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	List<Customer> hotelCustomers;
 	public Hotel(String name, String address, long gst, List<Food> hotelFoods, List<Customer> hotelCustomers) {
 		super();

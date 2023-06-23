@@ -15,7 +15,7 @@ public class FoodDAO {
 			ProvideEM.entityManager.persist(food);
 
 		}
-		ProvideEM.entityManager.merge(hotel4);
+		//ProvideEM.entityManager.merge(hotel4);
 		
 		entityTransaction.commit();
 		

@@ -41,7 +41,7 @@ public class HotelDAO {
 		EntityTransaction entityTransaction = ProvideEM.entityManager.getTransaction();
 		entityTransaction.begin();
 		for(Food food :hotel3.getHotelFoods()) {
-			ProvideEM.entityManager.merge(food);
+			//ProvideEM.entityManager.merge(food);
 		}
 		ProvideEM.entityManager.merge(hotel3);
 		entityTransaction.commit();
